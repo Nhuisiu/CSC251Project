@@ -1,5 +1,4 @@
 // Creating Insurance Policy class for getter and setter
-import java.util.Scanner;
 
 public class Policy {
     public int policyNumber;
@@ -10,8 +9,17 @@ public class Policy {
     public String smokingStatus;
     public double height;
     public double weight;
-    Scanner userInput = new Scanner(System.in);
-
+    
+    public Policy(int policyNumber, String providerName, String firstName, String lastName, int age, String smokingStatus, double height, double weight) {
+        this.policyNumber = policyNumber;
+        this.providerName = providerName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.smokingStatus = smokingStatus;
+        this.height = height;
+        this.weight = weight;
+    }
 
    /**
    Getter and Setter Method
@@ -134,19 +142,17 @@ public class Policy {
 
         return fee;
     }
+}    
     
-    
-    public void displayInformation() {
-        System.out.print("\nPolicy Number: " + getPolicyNumber());
-        System.out.print("\nProvider Name: " + getProviderName());
-        System.out.print("\nPolicyholder’s First Name: " + getFirstName());
-        System.out.print("\nPolicyholder’s Last Name: " + getLastName());
-        System.out.print("\nPolicyholder’s Age: " + getAge());
-        System.out.print("\nPolicyholder’s Smoking Status: " + getSmokingStatus());
-        System.out.print("\nPolicyholder’s Height: " + getHeight());
-        System.out.print("\nPolicyholder’s Weight: " + getWeight());
-        System.out.printf("\nPolicyholder’s BMI: %.2f", bmi);
-        System.out.printf("\nPolicy Price: %.2f", price);
-    }
-
-}
+    // public void displayInformation() {
+//         System.out.print("\nPolicy Number: " + getPolicyNumber());
+//         System.out.print("\nProvider Name: " + getProviderName());
+//         System.out.print("\nPolicyholder’s First Name: " + getFirstName());
+//         System.out.print("\nPolicyholder’s Last Name: " + getLastName());
+//         System.out.print("\nPolicyholder’s Age: " + getAge());
+//         System.out.print("\nPolicyholder’s Smoking Status: " + getSmokingStatus());
+//         System.out.print("\nPolicyholder’s Height: " + getHeight());
+//         System.out.print("\nPolicyholder’s Weight: " + getWeight());
+//         System.out.printf("\nPolicyholder’s BMI: %.2f", bmi);
+//         System.out.printf("\nPolicy Price: %.2f", price);
+//     }
