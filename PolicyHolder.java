@@ -1,6 +1,4 @@
 public class PolicyHolder {
-    private int policyNumber;
-    private String providerName;
     private String firstName;
     private String lastName;
     private int age;
@@ -8,9 +6,10 @@ public class PolicyHolder {
     private double height;
     private double weight;
 
-    public PolicyHolder(int policyNumber, String providerName, String firstName, String lastName, int age, String smokingStatus, double height, double weight) {
-        this.policyNumber = policyNumber;
-        this.providerName = providerName;
+    public PolicyHolder() {
+
+    }
+    public PolicyHolder(String firstName, String lastName, int age, String smokingStatus, double height, double weight) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -19,6 +18,7 @@ public class PolicyHolder {
         this.weight = weight;
 
     }
+
 
     /**
      Getter and Setter Method
@@ -83,32 +83,12 @@ public class PolicyHolder {
         this.weight = weight;
     }
 
-    //@return policy number
-    public int getPolicyNumber() {
-        return policyNumber;
-    }
-
-    //@param policyNumber user policy number
-    public void setPolicyNumber(int policyNumber) {
-        this.policyNumber = policyNumber;
-    }
-
-    //@return provider name
-    public String getProviderName() {
-        return providerName;
-    }
-
-    //@param providerName user provider name
-    public void setProviderName(String providerName) {
-        this.providerName = providerName;
-    }
-
     /**
      @weight
      @height
      @return result bmi of weight divide by height
      */
-    public double bmi(double weight, double height) {
+    public double getbmi() {
         return (weight * 703) / (height * height);
     }
 
@@ -118,28 +98,36 @@ public class PolicyHolder {
      @bmi
      @return the result of the price for age and smoker
      */
-    public double priceOfInsurancePolicy(int age, String smoker, double bmi) {
-        double BASEFEE = 600;
+    public double priceOfInsurancePolicy() {
+        final double BASEFEE = 600;
+        final double MAX_AGE = 50;
+        final double SMOKER = 100;
+        final double BMI = 35;
+
         double fee = BASEFEE;
-        age = getAge();
-        smoker = getSmokingStatus();
-        bmi = bmi(getWeight(), getHeight());
-        if (age > 50){
-            fee += 50;
-        } else {
-            fee += 0;
+
+        if(age > MAX_AGE) {
+            fee += 75;
         }
-        if (smoker.equalsIgnoreCase("smoker")){
-            fee += 100;
-        } else {
-            fee += 0;
+        if(smokingStatus.equalsIgnoreCase("smoker")){
+            fee += SMOKER;
         }
-        if (bmi > 35) {
-            fee += (bmi - 35) * 20;
-        } else {
-            fee += 0;
+        if(getbmi() > BMI) {
+            fee += ((getbmi() - BMI) * 20);
         }
 
         return fee;
+    }
+
+    //convert to String format
+    public String toString() {
+        return String.format("\nPolicyholder's First Name: " + firstName +
+                "\nPolicyholder's Last Name: " + lastName +
+                "\nPolicyholder's Age: " + age +
+                "\nPolicyholder's Smoking Status (Y/N): " + smokingStatus +
+                "\nPolicyholder's Height: %,.1f inches\n" +
+                "Policyholder's Weight: %,.1f pounds\n" +
+                "Policyholder's BMI: %,.2f\n" +
+                "Policy Price: $%,.2f\n\n", height, weight, getbmi(), priceOfInsurancePolicy());
     }
 }
