@@ -1,4 +1,5 @@
 public class PolicyHolder {
+    //Creating variables
     private String firstName;
     private String lastName;
     private int age;
@@ -6,9 +7,7 @@ public class PolicyHolder {
     private double height;
     private double weight;
 
-    public PolicyHolder() {
-
-    }
+    //accepting arg with constructor
     public PolicyHolder(String firstName, String lastName, int age, String smokingStatus, double height, double weight) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -17,6 +16,16 @@ public class PolicyHolder {
         this.height = height;
         this.weight = weight;
 
+    }
+
+    //to avoid security holes we make a clone of a constructor
+    public PolicyHolder(PolicyHolder policyHolderCopy) {
+        firstName = policyHolderCopy.firstName;
+        lastName = policyHolderCopy.lastName;
+        age = policyHolderCopy.age;
+        smokingStatus = policyHolderCopy.smokingStatus;
+        height = policyHolderCopy.height;
+        weight = policyHolderCopy.weight;
     }
 
 
@@ -128,6 +137,6 @@ public class PolicyHolder {
                 "\nPolicyholder's Height: %,.1f inches\n" +
                 "Policyholder's Weight: %,.1f pounds\n" +
                 "Policyholder's BMI: %,.2f\n" +
-                "Policy Price: $%,.2f\n\n", height, weight, getbmi(), priceOfInsurancePolicy());
+                "Policy Price: $%,.2f\n", height, weight, getbmi(), priceOfInsurancePolicy());
     }
 }
